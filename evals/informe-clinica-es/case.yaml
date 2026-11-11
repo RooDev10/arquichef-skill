@@ -1,0 +1,11 @@
+schema_version: "1.1"
+name: informe-clinica-es
+expected_outcome: |
+  A folder arquitectura/ with a PNG image and an HTML of a one-sheet layered enterprise
+  architecture of MediCita without arrows, containing actors, strategic alignment, capabilities,
+  demand (left), value offer (right) and the business, application, data and technology layers,
+  filled with specific content from informe-medicita.md (microservices, Kong, Keycloak, RabbitMQ,
+  HL7 FHIR, Ley 29733, Ley 30421, objectives O1-O4), plus a per-layer explanation in Markdown.
+  The contradiction between AWS EKS (AD-06) and Google Cloud GKE (section 10) is reported.
+context:
+  scaffold_script: place-files.sh

@@ -1,0 +1,25 @@
+# Salidas generadas al probar la skill
+salida*/
+prueba*/
+arquitectura/
+.arquichef-manifest.json
+
+# Node (no hay dependencias, por si acaso)
+node_modules/
+npm-debug.log*
+
+# Secretos y configuración local
+.env
+.env.*
+.claude/settings.local.json
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Temporales
+*.log
+tmp/

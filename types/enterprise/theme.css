@@ -1,0 +1,110 @@
+/* ArquiChef · enterprise map theme.
+   Layout and proportions are a 1:1 copy of the hand-made Verifish sheet
+   (horizontal title bars, coloured layer backgrounds with coloured boxes,
+   ArchiMate corner glyphs on every container and element, solid demand/value
+   columns, continuous lateral layers). Colours follow the ArchiMate-style
+   palette below. Each section defines: band (--bg), container box (--in),
+   nested box (--in2), element (--el) and border (--line). */
+
+:root { --line: #8a8a6a; }
+.s-actors       { --bg: #FEF9C3; --in: #FFFDE8; --in2: #FFFDE8; --el: #FFFEF3; --line: #C9A227; }
+.s-strategy     { --bg: #DBD8F0; --in: #D2CEEC; --in2: #D2CEEC; --el: #C7C2E8; --line: #8E87B8; }
+.s-capabilities { --bg: #F9F5EB; --in: #F3E8D2; --in2: #F3E8D2; --el: #F3E8D2; --line: #B9A57E; }
+.s-demand       { --bg: #A9D3FF; --line: #6F94BC; }
+.s-value        { --bg: #CCFFCC; --line: #78B478; }
+.s-business     { --bg: #FDE6C4; --in: #FAD6A5; --in2: #FCE3C1; --el: #FDEBD2; --line: #B8925A; }
+.s-application  { --bg: #DCE6F7; --in: #D0DCF3; --in2: #D0DCF3; --el: #C5D6F0; --line: #7F93B8; }
+.s-data         { --bg: #D8F3F6; --in: #E6F8FA; --in2: #E6F8FA; --el: #E6F8FA; --line: #6FAAB2; }
+.s-technology   { --bg: #DCFCE7; --in: #C6F6D5; --in2: #C6F6D5; --el: #C6F6D5; --line: #6FAE84; }
+.s-technology .box .el { --el: #E8FBEE; }
+.s-lateral-1    { --bg: #FFE0D1; --in: #FFC9AE; --in2: #FFC9AE; --el: #FFF1EA; --line: #C9825F; }
+.s-lateral-2    { --bg: #F9D9EC; --in: #F3C3DF; --in2: #F3C3DF; --el: #FDEEF6; --line: #B97FA2; }
+
+/* containers */
+.band, .box { position: relative; border: 1px solid var(--line); border-radius: 6px; }
+.band { background: var(--bg); padding: 8px 12px 12px; }
+.box { background: var(--in); padding: 8px 10px 10px; }
+.box .box { background: var(--in2); }
+.band > h2, .box > h3 { margin: 0 0 8px; padding: 0 20px; text-align: center; letter-spacing: .3px; }
+.band > h2 { font-size: 19px; }
+.band > h2.layer { text-align: left; padding-left: 0; }
+.box > h3 { font-size: 15px; }
+.box .box > h3 { font-size: 13px; }
+.box > h3.left { text-align: left; padding-left: 0; }
+.box > h3 .tn { font-weight: normal; }
+.sub { font-size: 12px; text-align: center; margin: -4px 0 8px; }
+.mt { margin-top: 10px; }
+
+/* layouts */
+.lay { gap: 8px; }
+.lay.row { display: flex; flex-wrap: wrap; justify-content: center; }
+.lay.row > * { flex: 1 1 0; min-width: 0; }
+.lay.grid { display: grid; }
+.lay.grid > * { min-width: 0; }
+.lay.stack { display: flex; flex-direction: column; }
+.vstack { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+
+/* elements */
+.el {
+  position: relative; background: var(--el); border: 1px solid var(--line); border-radius: 4px;
+  padding: 6px 22px 6px 8px; min-height: 44px; min-width: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; font-size: 12.5px; line-height: 1.25; overflow-wrap: break-word; hyphens: manual;
+}
+.el > .n { font-weight: bold; }
+.el > small { display: block; font-size: 11px; margin-top: 2px; }
+.el > .tag { display: inline-block; font-size: 10px; font-weight: bold; border: 1px solid var(--line); border-radius: 8px; padding: 0 5px; margin-top: 3px; background: #fff; }
+.el.v-dashed { border-style: dashed; }
+.el.v-rounded { border-radius: 14px; }
+.el.v-emphasis { font-size: 13px; min-height: 64px; padding-right: 18px; }
+.el.v-emphasis > .n { text-transform: uppercase; }
+.el.v-compact { font-size: 11px; padding-right: 20px; }
+.el.v-plain { background: #fff; }
+.s-strategy .el { border-radius: 10px; }
+.s-capabilities .el { border-radius: 8px; }
+.s-technology .lay > .el, .s-technology .nodes > .el { border-radius: 10px; }
+.inf-mark { font-size: 9px; margin-left: 1px; }
+
+/* actors */
+.grp { position: relative; background: var(--in); border: 1px solid var(--line); border-radius: 4px; padding: 4px 8px 8px; }
+.grp > .lab { text-align: center; font-size: 12px; margin: 0 18px 4px; }
+
+/* business layer */
+.biz-body { display: grid; gap: 10px; margin-top: 10px; }
+.biz-body > * { min-width: 0; }
+.flow { display: flex; align-items: stretch; gap: 3px; }
+.flow > .el { flex: 1 1 0; }
+.flow > .el.v-emphasis { padding: 18px 6px 6px; }
+.flow > .arr { flex: 0 0 auto; align-self: center; font-size: 15px; font-weight: bold; color: #6b5a3a; line-height: 1; }
+
+/* data and technology */
+.band.fill { display: flex; flex-direction: column; }
+.band.fill > .grow { flex: 1 1 auto; }
+.data-grid { display: grid; gap: 8px; align-content: stretch; }
+.data-grid > .el { min-height: 62px; }
+.tech-body { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: 10px; }
+.tech-body > * { min-width: 0; }
+.nodes { display: grid; gap: 8px; }
+.strip > .lay { padding: 0 24px; }
+
+/* side narratives (demand / value): solid column, one white note centred */
+.side { display: flex; flex-direction: column; }
+.side > h2 { margin: 0; }
+.paper {
+  margin: auto 0; background: #fff; border: 1px solid #777; padding: 14px;
+  font-size: 17px; font-weight: bold; line-height: 1.35;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+}
+.paper p { margin: 0 0 10px; }
+.paper .src { font-size: 13px; font-weight: normal; margin: 0; }
+
+/* cross-cutting lateral layers: one continuous frame, one cell per layer row
+   that fills the whole row height */
+.lateral-frame > h2 { font-size: 17px; }
+.lateral-cell { z-index: 1; padding: 0 10px; display: flex; flex-direction: column; }
+.lateral-cell.first { padding-top: 70px; }
+.lateral-cell.last { padding-bottom: 10px; }
+.lateral-cell > .box { flex: 1 1 auto; display: flex; flex-direction: column; }
+.lateral-cell > .box > .lay { flex: 1 1 auto; justify-content: center; align-content: center; }
+
+.footer { font-size: 12px; color: #444; display: flex; justify-content: space-between; gap: 20px; padding: 0 4px 4px; }

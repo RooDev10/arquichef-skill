@@ -1,0 +1,14 @@
+{
+  "name": "arquichef",
+  "version": "0.2.0",
+  "description": "Layered architecture sheets (enterprise maps first) from a validated JSON spec. Zero dependencies.",
+  "type": "module",
+  "private": true,
+  "license": "UNLICENSED",
+  "bin": { "arquichef": "bin/arquichef.mjs" },
+  "engines": { "node": ">=18.17" },
+  "scripts": {
+    "test": "node --test tests/",
+    "check:example": "node bin/arquichef.mjs check types/enterprise/examples/verifish.json"
+  }
+}

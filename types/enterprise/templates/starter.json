@@ -1,0 +1,158 @@
+{
+  "arquichef": "2",
+  "type": "enterprise",
+  "meta": {
+    "title": "Arquitectura empresarial",
+    "organization": "Nombre de la organización",
+    "description": "Una o dos frases que presenten la lámina en el README.",
+    "language": "es",
+    "width": 2200,
+    "sources": [
+      { "id": "informe", "label": "Documento fuente (título y versión)" }
+    ]
+  },
+  "actors": {
+    "title": "ACTORES",
+    "summary": "Quién participa y con qué rol.",
+    "groups": [
+      { "label": "Externos", "items": [
+        { "name": "Cliente", "detail": "Qué hace o qué segmento es", "source": "informe:1.3" }
+      ] },
+      { "label": "Internos", "items": [
+        { "name": "Rol interno", "detail": "Responsabilidad", "source": "informe:1.3" }
+      ] },
+      { "label": "Proveedor de la solución y entorno", "items": [
+        { "name": "Equipo del proyecto", "detail": "Quiénes son", "source": "informe:1.1" }
+      ] }
+    ]
+  },
+  "strategy": {
+    "title": "ALINEAMIENTO ESTRATÉGICO",
+    "summary": "Misión, visión, objetivos y modelo de negocio.",
+    "statements": [
+      { "name": "MISIÓN", "detail": "Texto breve", "source": "informe:1.1" },
+      { "name": "VISIÓN", "detail": "Texto breve", "source": "informe:1.1" }
+    ],
+    "goals": [
+      { "name": "G1 · Objetivo medible", "source": "informe:3.3" },
+      { "name": "G2 · Objetivo medible", "source": "informe:3.3" }
+    ],
+    "model": [
+      { "name": "MODELO DE NEGOCIO", "detail": "Cómo genera ingresos", "source": "informe:1.1" }
+    ]
+  },
+  "capabilities": {
+    "title": "CAPACIDADES",
+    "summary": "Lo que la organización debe saber hacer.",
+    "items": [
+      { "name": "Capacidad 1", "source": "informe:4.2" },
+      { "name": "Capacidad 2", "source": "informe:4.2" }
+    ]
+  },
+  "demand": {
+    "title": "DEMANDA",
+    "paragraphs": ["El problema, a quién afecta y cuánto cuesta."],
+    "source": "informe:1.2"
+  },
+  "value": {
+    "title": "OFERTA DE VALOR",
+    "paragraphs": ["El resultado que se promete, con metas medibles."],
+    "source": "informe:1.2"
+  },
+  "layers": {
+    "business": {
+      "title": "ARQUITECTURA DE NEGOCIO",
+      "summary": "Marcos, conocimiento, cambio, estructura, servicios, procesos y gobierno de datos.",
+      "frameworks": { "items": [
+        { "name": "Marcos para los procesos", "detail": "Normas o métodos concretos", "source": "informe:7.1" }
+      ] },
+      "knowledge": { "items": [
+        { "name": "Práctica de conocimiento", "source": "informe:2.2" }
+      ] },
+      "change": { "items": [
+        { "name": "Práctica de adopción", "source": "informe:2.2" }
+      ] },
+      "organization": { "units": [
+        { "title": "ORGANIZACIÓN CLIENTE", "note": "Cómo se organiza", "items": [
+          { "name": "Unidad o rol", "source": "informe:1.3" }
+        ] },
+        { "title": "EQUIPO PROVEEDOR", "items": [
+          { "name": "Área", "source": "informe:1.1" }
+        ] }
+      ] },
+      "services": {
+        "external": { "title": "SERVICIOS EXTERNOS (públicos)", "items": [
+          { "name": "Servicio externo", "source": "informe:3.4" }
+        ] },
+        "internal": { "title": "SERVICIOS INTERNOS", "items": [
+          { "name": "Servicio interno", "source": "informe:3.4" }
+        ] }
+      },
+      "processes": {
+        "title": "PROCESOS: FLUJO DE VALOR PRINCIPAL",
+        "stages": [
+          { "name": "Etapa 1", "source": "informe:4.2" },
+          { "name": "Etapa 2", "source": "informe:4.2" }
+        ],
+        "crossCutting": [
+          { "name": "PROCESO TRANSVERSAL", "source": "informe:4.2" }
+        ]
+      },
+      "dataGovernance": { "items": [
+        { "name": "Recolección", "detail": "Qué datos y de dónde", "source": "informe:4.3" }
+      ] }
+    },
+    "application": {
+      "title": "ARQUITECTURA DE APLICACIONES",
+      "summary": "Sistemas, módulos, aplicaciones cliente, servicios de TI y terceros.",
+      "core": {
+        "title": "SISTEMA PRINCIPAL",
+        "note": "Tecnología",
+        "items": [
+          { "name": "Módulo", "detail": "Responsabilidad", "tag": "Core", "source": "informe:4.2" }
+        ],
+        "jobs": [
+          { "name": "ProcesoProgramado", "source": "informe:4.2" }
+        ]
+      },
+      "clients": { "items": [
+        { "name": "App", "detail": "Tecnología · usuario", "source": "informe:4.3" }
+      ] },
+      "itServices": { "items": [
+        { "name": "API REST", "source": "informe:4.3" }
+      ] },
+      "thirdParty": { "items": [
+        { "name": "Proveedor", "detail": "Para qué se usa", "source": "informe:4.3" }
+      ] }
+    },
+    "data": {
+      "title": "ARQUITECTURA DE DATOS",
+      "summary": "Almacenes de datos y reglas de gobierno.",
+      "items": [
+        { "name": "Base de datos", "detail": "Tecnología y propósito", "source": "informe:4.3" }
+      ],
+      "governance": [
+        { "name": "GOBIERNO DE DATOS", "detail": "Regla clave", "source": "informe:4.3" }
+      ]
+    },
+    "technology": {
+      "title": "ARQUITECTURA TECNOLÓGICA",
+      "summary": "Nodos, riesgos, seguridad y gobernanza tecnológica.",
+      "nodes": [
+        { "name": "Nodo de hosting", "detail": "Servicio, región", "source": "informe:4.3.4" },
+        { "name": "Dispositivo", "icon": "device", "source": "informe:4.3.4" }
+      ],
+      "risks": { "items": [
+        { "name": "Riesgo → mitigación", "source": "informe:4.1" }
+      ] },
+      "security": { "items": [
+        { "name": "Control de seguridad", "source": "informe:4.1" }
+      ] },
+      "governance": { "items": [
+        { "name": "CI/CD", "source": "informe:7.1" }
+      ] }
+    }
+  },
+  "laterals": [],
+  "notes": []
+}

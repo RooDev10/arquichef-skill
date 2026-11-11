@@ -1,0 +1,11 @@
+schema_version: "1.1"
+name: brief-fleet-ai-lateral-en
+expected_outcome: |
+  A folder ea/ with a PNG (and its HTML) of a one-sheet layered enterprise architecture of
+  GreenFleet in English, without arrows, with demand and value offer on the sides and an AI
+  cross-cutting lateral layer that has content in each of the business, application, data and
+  technology rows (Optimize add-on, forecasting service, optimizer, battery-health model, Feast,
+  MLflow, GPU training, drift monitoring), plus a short per-layer explanation. The contradiction
+  between Amazon ECS with Fargate (ADR-5) and Kubernetes on EKS (Operations) is reported.
+context:
+  scaffold_script: place-files.sh

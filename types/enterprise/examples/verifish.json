@@ -1,0 +1,948 @@
+{
+  "arquichef": "2",
+  "type": "enterprise",
+  "meta": {
+    "title": "Arquitectura empresarial",
+    "organization": "Verifish · YakuControl + YakuTrace",
+    "description": "Lámina única que organiza YakuControl + YakuTrace por capas: actores, estrategia y capacidades arriba; demanda y oferta de valor a los lados; negocio, aplicaciones, datos y tecnología en el centro, y una capa lateral de blockchain que atraviesa las cuatro.",
+    "language": "es",
+    "width": 2200,
+    "sources": [
+      {
+        "id": "informe",
+        "label": "Informe del proyecto Verifish (capítulos I a VII)"
+      }
+    ]
+  },
+  "actors": {
+    "title": "ACTORES",
+    "summary": "Quién participa: los compradores y consumidores de la cadena comercial, el administrador y el piscicultor de la piscigranja cliente, y el entorno (equipo Verifish, proveedores de servicios y entidades del sector).",
+    "weights": [
+      1.25,
+      1,
+      1
+    ],
+    "groups": [
+      {
+        "label": "Externos (cadena comercial y mercado)",
+        "items": [
+          {
+            "name": "Comprador de supermercado",
+            "detail": "Compras y aseguramiento de calidad",
+            "source": "informe:1.3"
+          },
+          {
+            "name": "Consumidor final",
+            "detail": "Visitante que escanea el QR",
+            "source": "informe:1.3"
+          },
+          {
+            "name": "Cadenas de supermercados",
+            "detail": "Cencosud, Supermercados Peruanos, Tottus",
+            "source": "informe:1.3"
+          }
+        ]
+      },
+      {
+        "label": "Internos (piscigranja cliente)",
+        "items": [
+          {
+            "name": "Administrador de piscigranja",
+            "detail": "ROLE_ADMIN",
+            "source": "informe:1.3"
+          },
+          {
+            "name": "Piscicultor",
+            "detail": "Operario de campo",
+            "source": "informe:1.3"
+          }
+        ]
+      },
+      {
+        "label": "Proveedor de la solución y entorno",
+        "items": [
+          {
+            "name": "Equipo Verifish",
+            "detail": "Startup, 5 integrantes",
+            "source": "informe:1.1.2"
+          },
+          {
+            "name": "Proveedores de servicios",
+            "detail": "Stripe, Firebase, RPC",
+            "source": "informe:4.1.2.3"
+          },
+          {
+            "name": "SANIPES / PRODUCE",
+            "detail": "Entidades del sector",
+            "source": "informe:2.1",
+            "inferred": true
+          }
+        ]
+      }
+    ]
+  },
+  "strategy": {
+    "title": "ALINEAMIENTO ESTRATÉGICO",
+    "summary": "La misión y la visión de la startup, los cinco objetivos SMART del Impact Mapping y el modelo de negocio SaaS B2B con el complemento TRACE.",
+    "statements": [
+      {
+        "name": "MISIÓN",
+        "detail": "Transformación digital acuícola con IoT de monitoreo y trazabilidad verificable por lote",
+        "source": "informe:1.1.1"
+      },
+      {
+        "name": "VISIÓN 2030",
+        "detail": "Referente en monitoreo, analítica y trazabilidad verificable en América Latina",
+        "source": "informe:1.1.1"
+      }
+    ],
+    "goals": [
+      {
+        "name": "G1 · 50 estanques con monitoreo activo en 6 meses",
+        "source": "informe:3.3"
+      },
+      {
+        "name": "G2 · Reducir al menos 15% los eventos de mortalidad masiva",
+        "source": "informe:3.3"
+      },
+      {
+        "name": "G3 · Certificado verificable para el 100% de los lotes piloto",
+        "source": "informe:3.3"
+      },
+      {
+        "name": "G4 · 20% de las granjas piloto contrata TRACE",
+        "source": "informe:3.3"
+      },
+      {
+        "name": "G5 · Un supermercado verifica lotes reales en menos de 1 minuto",
+        "source": "informe:3.3"
+      }
+    ],
+    "model": [
+      {
+        "name": "MODELO DE NEGOCIO SaaS B2B",
+        "detail": "Suscripción mensual por estanque y complemento TRACE",
+        "icon": "principle",
+        "source": "informe:1.1.1"
+      }
+    ]
+  },
+  "capabilities": {
+    "title": "CAPACIDADES DE VERIFISH",
+    "summary": "Lo que la organización debe saber hacer para cumplir su estrategia, desde el monitoreo IoT hasta la certificación con blockchain y el despliegue continuo.",
+    "columns": 7,
+    "items": [
+      {
+        "name": "Monitoreo IoT en tiempo real",
+        "source": "informe:1.1.1"
+      },
+      {
+        "name": "Cálculo del Índice de Calidad del Agua (ICA)",
+        "source": "informe:1.2.1"
+      },
+      {
+        "name": "Alerta temprana y respuesta a emergencias",
+        "source": "informe:4.2.2"
+      },
+      {
+        "name": "Control remoto de actuadores",
+        "source": "informe:1.3"
+      },
+      {
+        "name": "Operación autónoma en el borde (Edge)",
+        "source": "informe:4.1.4"
+      },
+      {
+        "name": "Trazabilidad por lote",
+        "source": "informe:4.2.2"
+      },
+      {
+        "name": "Certificación verificable con blockchain",
+        "source": "informe:1.1.1"
+      },
+      {
+        "name": "Gestión de estanques y equipos",
+        "source": "informe:4.2.2"
+      },
+      {
+        "name": "Analítica histórica y reportes",
+        "source": "informe:3.4"
+      },
+      {
+        "name": "Gestión de suscripciones y cobros",
+        "source": "informe:4.2.2"
+      },
+      {
+        "name": "Seguridad y aislamiento por granja",
+        "source": "informe:4.1.2.2"
+      },
+      {
+        "name": "Interoperabilidad con terceros",
+        "source": "informe:4.1.2.3"
+      },
+      {
+        "name": "Experiencia del cliente (web, móvil, i18n)",
+        "source": "informe:4.1.2.3"
+      },
+      {
+        "name": "Integración y despliegue continuo",
+        "source": "informe:7.1.1"
+      }
+    ]
+  },
+  "demand": {
+    "title": "DEMANDA",
+    "paragraphs": [
+      "Las piscigranjas de trucha altoandinas sufren mortalidad masiva por cambios en la calidad del agua que se detectan tarde: el control es manual, esporádico y sin historial.",
+      "Un solo evento puede matar hasta 200 000 truchas y costar más de S/ 300 000.",
+      "Los supermercados no tienen evidencia verificable del origen ni de las condiciones de cría de cada lote."
+    ],
+    "source": "informe:1.2.1 (5W+2H)"
+  },
+  "value": {
+    "title": "OFERTA DE VALOR",
+    "paragraphs": [
+      "Monitoreo preventivo del agua con alertas en menos de 10 segundos y control remoto de equipos, para reducir la mortalidad en las piscigranjas.",
+      "Certificado por lote con código QR, verificable en menos de 3 segundos y sin crear cuenta.",
+      "Todo mediante una suscripción SaaS accesible para pequeños y medianos productores."
+    ],
+    "source": "informe:4.1.2.2"
+  },
+  "layers": {
+    "business": {
+      "title": "ARQUITECTURA DE NEGOCIO",
+      "summary": "Marcos de referencia, gestión del conocimiento y del cambio, estructura organizacional, servicios, el ciclo productivo y de trazabilidad del lote, y el gobierno de los datos.",
+      "frameworks": {
+        "title": "ALINEAMIENTO NORMATIVO / MARCOS DE REFERENCIA",
+        "items": [
+          {
+            "name": "Marcos para la trazabilidad",
+            "detail": "Estándar GDST (eventos críticos y datos clave) y GS1 EPCIS 2.0",
+            "icon": "framework",
+            "variant": "dashed",
+            "source": "informe:4.1.4"
+          },
+          {
+            "name": "Marcos para la certificación",
+            "detail": "Marca de Certificación SANIPES y ASC (complementarias)",
+            "icon": "framework",
+            "variant": "dashed",
+            "source": "informe:2.1.1"
+          },
+          {
+            "name": "Marcos para los procesos",
+            "detail": "Scrum por sprints, GitFlow, SemVer y Conventional Commits",
+            "icon": "framework",
+            "variant": "dashed",
+            "source": "informe:7.1.2"
+          },
+          {
+            "name": "Marcos para las aplicaciones",
+            "detail": "Material Design, i18n en_US / es_419 y ARIA (TC10)",
+            "icon": "framework",
+            "variant": "dashed",
+            "source": "informe:4.1.2.3"
+          },
+          {
+            "name": "Marcos para los datos",
+            "detail": "Solo hashes on-chain, nunca datos comerciales (TC08)",
+            "icon": "framework",
+            "variant": "dashed",
+            "source": "informe:4.1.2.3"
+          },
+          {
+            "name": "Marcos para la seguridad",
+            "detail": "JWT por granja, firma HMAC y pagos sin datos de tarjeta (TC06)",
+            "icon": "framework",
+            "variant": "dashed",
+            "source": "informe:4.1.2.3"
+          },
+          {
+            "name": "Marcos para la infraestructura",
+            "detail": "Bajo costo (TC01) y conectividad rural intermitente (TC03)",
+            "icon": "framework",
+            "variant": "dashed",
+            "source": "informe:4.1.2.3"
+          }
+        ]
+      },
+      "knowledge": {
+        "title": "GESTIÓN DEL CONOCIMIENTO",
+        "items": [
+          {
+            "name": "Entrevistas a los 3 segmentos y User Personas",
+            "icon": "actor",
+            "source": "informe:2.2"
+          },
+          {
+            "name": "Ubiquitous Language compartido",
+            "icon": "actor",
+            "source": "informe:2.4"
+          },
+          {
+            "name": "EventStorming y Domain Message Flows",
+            "icon": "actor",
+            "source": "informe:4.2.1"
+          },
+          {
+            "name": "Documentación OpenAPI y del informe en GitHub",
+            "icon": "actor",
+            "source": "informe:7.1.1"
+          }
+        ]
+      },
+      "change": {
+        "title": "GESTIÓN DEL CAMBIO",
+        "items": [
+          {
+            "name": "Del cuaderno y WhatsApp al registro digital",
+            "icon": "actor",
+            "source": "informe:1.2.1"
+          },
+          {
+            "name": "Interfaz de campo en 2 toques (QA-09)",
+            "icon": "actor",
+            "source": "informe:4.1.2.2"
+          },
+          {
+            "name": "Piloto con granjas y un supermercado",
+            "icon": "actor",
+            "source": "informe:3.3"
+          },
+          {
+            "name": "Demostración con maqueta en ferias de PRODUCE",
+            "icon": "actor",
+            "source": "informe:2.1.2"
+          }
+        ]
+      },
+      "organization": {
+        "title": "ESTRUCTURA ORGANIZACIONAL",
+        "weights": [
+          0.8,
+          1.3,
+          0.9
+        ],
+        "units": [
+          {
+            "title": "PISCIGRANJA CLIENTE",
+            "note": "Granja → Estanques → Lotes",
+            "items": [
+              {
+                "name": "Administrador",
+                "detail": "Planifica, paga y certifica",
+                "icon": "actor",
+                "source": "informe:1.3"
+              },
+              {
+                "name": "Piscicultores",
+                "detail": "Rondas, alertas y equipos",
+                "icon": "actor",
+                "source": "informe:1.3"
+              },
+              {
+                "name": "Estanques y lotes",
+                "detail": "Unidad de producción",
+                "icon": "actor",
+                "source": "informe:2.4"
+              }
+            ]
+          },
+          {
+            "title": "VERIFISH",
+            "note": "Áreas de trabajo del equipo",
+            "columns": 2,
+            "items": [
+              {
+                "name": "Producto y UX",
+                "icon": "actor",
+                "source": "informe:TB2"
+              },
+              {
+                "name": "Backend",
+                "icon": "actor",
+                "source": "informe:TB2"
+              },
+              {
+                "name": "Web y móvil",
+                "icon": "actor",
+                "source": "informe:TB2"
+              },
+              {
+                "name": "Edge / IoT",
+                "icon": "actor",
+                "source": "informe:TB2"
+              },
+              {
+                "name": "Despliegue",
+                "icon": "actor",
+                "source": "informe:TB2"
+              }
+            ]
+          },
+          {
+            "title": "CANAL MODERNO",
+            "note": "316 supermercados en el Perú",
+            "items": [
+              {
+                "name": "Cencosud",
+                "detail": "Wong, Metro",
+                "icon": "actor",
+                "source": "informe:1.3"
+              },
+              {
+                "name": "Supermercados Peruanos",
+                "detail": "Plaza Vea, Vivanda, Mass",
+                "icon": "actor",
+                "source": "informe:1.3"
+              },
+              {
+                "name": "Tottus",
+                "icon": "actor",
+                "source": "informe:1.3"
+              }
+            ]
+          }
+        ]
+      },
+      "services": {
+        "title": "SERVICIOS DE NEGOCIO",
+        "weights": [
+          1,
+          2
+        ],
+        "external": {
+          "title": "SERVICIOS EXTERNOS (públicos)",
+          "items": [
+            {
+              "name": "Verificación de lotes por QR, sin cuenta",
+              "variant": "rounded",
+              "source": "informe:3.2"
+            },
+            {
+              "name": "Catálogo de planes y contacto de ventas",
+              "variant": "rounded",
+              "source": "informe:3.2"
+            },
+            {
+              "name": "Propuesta de valor, sección YakuTrace y FAQ",
+              "variant": "rounded",
+              "source": "informe:3.2"
+            }
+          ]
+        },
+        "internal": {
+          "title": "SERVICIOS INTERNOS (para la piscigranja)",
+          "columns": 4,
+          "items": [
+            {
+              "name": "Monitoreo de estanques",
+              "variant": "rounded",
+              "source": "informe:3.4"
+            },
+            {
+              "name": "Alertas push y por correo",
+              "variant": "rounded",
+              "source": "informe:3.4"
+            },
+            {
+              "name": "Control de aireador y filtros",
+              "variant": "rounded",
+              "source": "informe:3.4"
+            },
+            {
+              "name": "Gestión de lotes e hitos",
+              "variant": "rounded",
+              "source": "informe:3.4"
+            },
+            {
+              "name": "Emisión y revocación de certificados",
+              "variant": "rounded",
+              "source": "informe:3.4"
+            },
+            {
+              "name": "Reportes, tendencias y auditoría de respuesta",
+              "variant": "rounded",
+              "source": "informe:3.4"
+            },
+            {
+              "name": "Gestión de usuarios y estanques",
+              "variant": "rounded",
+              "source": "informe:3.4"
+            },
+            {
+              "name": "Suscripción y plan TRACE",
+              "variant": "rounded",
+              "source": "informe:3.4"
+            }
+          ]
+        }
+      },
+      "processes": {
+        "title": "PROCESOS: CICLO PRODUCTIVO Y DE TRAZABILIDAD DEL LOTE",
+        "stages": [
+          {
+            "name": "Siembra del lote",
+            "icon": "function",
+            "variant": "emphasis",
+            "source": "informe:4.2.3"
+          },
+          {
+            "name": "Monitoreo y respuesta",
+            "icon": "function",
+            "variant": "emphasis",
+            "source": "informe:4.2.3"
+          },
+          {
+            "name": "Registro de hitos",
+            "icon": "function",
+            "variant": "emphasis",
+            "source": "informe:4.2.3"
+          },
+          {
+            "name": "Cosecha",
+            "icon": "function",
+            "variant": "emphasis",
+            "source": "informe:4.2.3"
+          },
+          {
+            "name": "Certificación y anclaje",
+            "icon": "function",
+            "variant": "emphasis",
+            "source": "informe:4.2.3"
+          },
+          {
+            "name": "Verificación del comprador",
+            "icon": "function",
+            "variant": "emphasis",
+            "source": "informe:4.2.3"
+          }
+        ],
+        "crossCutting": [
+          {
+            "name": "SUSCRIPCIÓN Y FACTURACIÓN RECURRENTE (proceso transversal)",
+            "icon": "function",
+            "variant": "rounded",
+            "source": "informe:4.2.3"
+          }
+        ]
+      },
+      "dataGovernance": {
+        "title": "GESTIÓN Y GOBIERNO DE DATOS",
+        "items": [
+          {
+            "name": "Recolección",
+            "detail": "pH, temperatura y turbidez",
+            "icon": "goal",
+            "variant": "rounded",
+            "source": "informe:1.2.1"
+          },
+          {
+            "name": "Validación",
+            "detail": "Firma HMAC y filtro de falsos positivos",
+            "icon": "goal",
+            "variant": "rounded",
+            "source": "informe:4.1.4"
+          },
+          {
+            "name": "Análisis",
+            "detail": "ICA y rangos óptimos por estanque",
+            "icon": "goal",
+            "variant": "rounded",
+            "source": "informe:4.3.3"
+          },
+          {
+            "name": "Consolidación",
+            "detail": "Resúmenes de calidad cerrados",
+            "icon": "goal",
+            "variant": "rounded",
+            "source": "informe:3.4"
+          },
+          {
+            "name": "Indicadores",
+            "detail": "% en rango, cobertura y tiempo de respuesta",
+            "icon": "goal",
+            "variant": "rounded",
+            "source": "informe:3.4"
+          }
+        ]
+      }
+    },
+    "application": {
+      "title": "ARQUITECTURA DE APLICACIONES",
+      "summary": "El backend es un monolito modular con seis Bounded Contexts y tres procesos programados. Lo acompañan las aplicaciones cliente en Flutter y la landing, los servicios de TI comunes y las soluciones de terceros.",
+      "core": {
+        "title": "YAKUCONTROL BACKEND · MONOLITO MODULAR",
+        "note": "Spring Boot 3.4, Spring Modulith",
+        "columns": 3,
+        "items": [
+          {
+            "name": "IAM",
+            "detail": "JWT, roles y Farm Key",
+            "tag": "Generic",
+            "source": "informe:4.2.2"
+          },
+          {
+            "name": "Equipment",
+            "detail": "Estanques, sensores y actuadores",
+            "tag": "Supporting",
+            "source": "informe:4.2.2"
+          },
+          {
+            "name": "Telemetry",
+            "detail": "Ingesta, ICA y resúmenes",
+            "tag": "Core",
+            "source": "informe:4.2.2"
+          },
+          {
+            "name": "Notification",
+            "detail": "Alertas y acciones de emergencia",
+            "tag": "Core",
+            "source": "informe:4.2.2"
+          },
+          {
+            "name": "Payment",
+            "detail": "Suscripción y add-on TRACE",
+            "tag": "Generic",
+            "source": "informe:4.2.2"
+          },
+          {
+            "name": "Traceability",
+            "detail": "Lotes, hitos y certificados",
+            "tag": "Core",
+            "source": "informe:4.2.2"
+          }
+        ],
+        "jobs": [
+          {
+            "name": "QualitySummaryScheduler",
+            "icon": "function",
+            "variant": "compact",
+            "source": "informe:4.1.4 (AD-14)"
+          },
+          {
+            "name": "AnchorOutboxWorker",
+            "icon": "function",
+            "variant": "compact",
+            "source": "informe:4.1.4 (AD-14)"
+          },
+          {
+            "name": "NotificationDeliveryRetryJob",
+            "icon": "function",
+            "variant": "compact",
+            "source": "informe:4.1.4 (AD-14)"
+          }
+        ]
+      },
+      "clients": {
+        "title": "APLICACIONES CLIENTE",
+        "items": [
+          {
+            "name": "App móvil",
+            "detail": "Flutter (Android) · piscicultor",
+            "source": "informe:7.1.2"
+          },
+          {
+            "name": "Web App",
+            "detail": "Flutter Web · administrador y verificación pública",
+            "source": "informe:7.1.2"
+          },
+          {
+            "name": "Landing Page",
+            "detail": "HTML5, CSS3 y JavaScript",
+            "source": "informe:4.3.3"
+          }
+        ]
+      },
+      "itServices": {
+        "title": "SERVICIOS DE TI",
+        "items": [
+          {
+            "name": "API REST + OpenAPI / Swagger",
+            "icon": "service",
+            "source": "informe:4.1.2.3 (TC09)"
+          },
+          {
+            "name": "Eventos de dominio en proceso",
+            "icon": "service",
+            "source": "informe:4.1.4 (AD-03)"
+          },
+          {
+            "name": "Puertos y adaptadores (ACL)",
+            "icon": "service",
+            "source": "informe:4.1.4 (AD-05)"
+          },
+          {
+            "name": "Edge API",
+            "detail": "Ingesta MQTT, ICA y firma",
+            "source": "informe:4.3.3"
+          }
+        ]
+      },
+      "thirdParty": {
+        "title": "SOLUCIONES DE TERCEROS",
+        "items": [
+          {
+            "name": "Stripe",
+            "detail": "Pagos y webhooks firmados",
+            "source": "informe:4.1.4 (AD-07)"
+          },
+          {
+            "name": "Firebase Cloud Messaging",
+            "detail": "Notificaciones push",
+            "source": "informe:4.1.2.3 (TC11)"
+          },
+          {
+            "name": "Servicio de correo",
+            "source": "informe:4.1.2.3 (TC11)"
+          },
+          {
+            "name": "API meteorológica",
+            "source": "informe:4.3.2"
+          }
+        ]
+      }
+    },
+    "data": {
+      "title": "ARQUITECTURA DE DATOS",
+      "summary": "PostgreSQL con un esquema por contexto y la serie temporal en TimescaleDB, junto con los resúmenes, la trazabilidad, las suscripciones y la cola del Edge. Cada consulta se aísla por granja.",
+      "items": [
+        {
+          "name": "Base operativa PostgreSQL 16",
+          "detail": "Un esquema por Bounded Context",
+          "source": "informe:4.3.3"
+        },
+        {
+          "name": "Serie temporal de lecturas",
+          "detail": "TimescaleDB (hypertables)",
+          "source": "informe:4.1.4 (AD-06)"
+        },
+        {
+          "name": "Resúmenes de calidad",
+          "detail": "Cerrados por día, semana y mes",
+          "source": "informe:3.4 (TS08)"
+        },
+        {
+          "name": "Datos de trazabilidad",
+          "detail": "Lotes, hitos y certificados",
+          "source": "informe:5.2.6.2"
+        },
+        {
+          "name": "Suscripciones y facturas",
+          "detail": "Planes BASIC, PRO, ENTERPRISE",
+          "source": "informe:5.6.1"
+        },
+        {
+          "name": "Cola resiliente del Edge",
+          "detail": "Redis",
+          "source": "informe:7.1.4"
+        }
+      ],
+      "governance": [
+        {
+          "name": "GOBIERNO DE DATOS",
+          "detail": "Aislamiento por farmId en cada consulta",
+          "icon": "principle",
+          "source": "informe:7.2.1.3"
+        }
+      ]
+    },
+    "technology": {
+      "title": "ARQUITECTURA TECNOLÓGICA",
+      "summary": "Los nodos reales del despliegue (dispositivo, Edge en Railway, Azure, Firebase, Netlify y el teléfono del piscicultor), la gestión de riesgos, la seguridad de la información y la gobernanza tecnológica.",
+      "columns": 7,
+      "nodes": [
+        {
+          "name": "Dispositivo IoT",
+          "detail": "Arduino UNO, sensores y actuadores",
+          "icon": "device",
+          "source": "informe:4.3.3"
+        },
+        {
+          "name": "Edge en Railway",
+          "detail": "Flask, Mosquitto y Redis",
+          "source": "informe:7.1.4"
+        },
+        {
+          "name": "Azure App Service",
+          "detail": "Java 17, Brazil South",
+          "source": "informe:7.1.4"
+        },
+        {
+          "name": "Azure Database for PostgreSQL",
+          "detail": "Servidor flexible",
+          "source": "informe:7.1.4"
+        },
+        {
+          "name": "Firebase Hosting y App Distribution",
+          "source": "informe:7.1.4"
+        },
+        {
+          "name": "Netlify",
+          "detail": "Hosting estático con CDN",
+          "source": "informe:7.1.4"
+        },
+        {
+          "name": "Smartphone del piscicultor",
+          "icon": "device",
+          "source": "informe:4.3.4"
+        }
+      ],
+      "risks": {
+        "items": [
+          {
+            "name": "Conectividad intermitente → Edge (AD-01)",
+            "source": "informe:4.1.4"
+          },
+          {
+            "name": "Red caída → Outbox (AD-10)",
+            "source": "informe:4.1.4"
+          },
+          {
+            "name": "Réplicas → bloqueo (AD-14)",
+            "source": "informe:4.1.4"
+          }
+        ]
+      },
+      "security": {
+        "title": "Seguridad de la información / Ciberseguridad",
+        "columns": 4,
+        "items": [
+          {
+            "name": "Autenticación JWT",
+            "icon": "service",
+            "variant": "rounded",
+            "source": "informe:4.1.4 (AD-04)"
+          },
+          {
+            "name": "Autorización ROLE_ADMIN / OPERATOR",
+            "icon": "service",
+            "variant": "rounded",
+            "source": "informe:7.2.1.4"
+          },
+          {
+            "name": "Firma HMAC de lecturas (AD-12)",
+            "icon": "service",
+            "variant": "rounded",
+            "source": "informe:4.1.4 (AD-12)"
+          },
+          {
+            "name": "Webhooks de Stripe validados",
+            "icon": "service",
+            "variant": "rounded",
+            "source": "informe:4.1.4 (AD-07)"
+          }
+        ]
+      },
+      "governance": {
+        "title": "GOBERNANZA TECNOLÓGICA",
+        "items": [
+          {
+            "name": "GitHub y GitHub Actions (CI/CD)",
+            "icon": "service",
+            "variant": "rounded",
+            "source": "informe:7.1.1"
+          },
+          {
+            "name": "Pruebas JUnit, Cucumber y pytest",
+            "icon": "service",
+            "variant": "rounded",
+            "source": "informe:7.1.1"
+          },
+          {
+            "name": "Arquitectura hexagonal (AD-05)",
+            "icon": "service",
+            "variant": "rounded",
+            "source": "informe:4.1.4 (AD-05)"
+          }
+        ]
+      }
+    }
+  },
+  "laterals": [
+    {
+      "title": "CAPA DE CONFIANZA BLOCKCHAIN · YakuTrace",
+      "summary": "Recorre las cuatro capas para mostrar qué parte de cada una sostiene la trazabilidad verificable de YakuTrace.",
+      "sections": {
+        "business": {
+          "title": "NEGOCIO",
+          "items": [
+            {
+              "name": "Certificado verificable del lote",
+              "detail": "Registro inalterado, no garantía absoluta",
+              "icon": "service",
+              "variant": "rounded",
+              "source": "informe:1.2.1"
+            },
+            {
+              "name": "Complemento TRACE",
+              "icon": "service",
+              "variant": "rounded",
+              "source": "informe:1.1.1"
+            },
+            {
+              "name": "Estados: pendiente, anclado, revocado",
+              "icon": "service",
+              "variant": "rounded",
+              "source": "informe:6.1"
+            }
+          ]
+        },
+        "application": {
+          "title": "APLICACIONES",
+          "items": [
+            {
+              "name": "LedgerPort y adaptador",
+              "detail": "Aísla la red del dominio (AD-05, AD-09)",
+              "source": "informe:4.2.5"
+            },
+            {
+              "name": "Verificación pública en servidor",
+              "detail": "Recalcula y compara la huella (AD-11)",
+              "source": "informe:4.1.4 (AD-11)"
+            }
+          ]
+        },
+        "data": {
+          "title": "DATOS",
+          "columns": 2,
+          "items": [
+            {
+              "name": "Huella SHA-256",
+              "detail": "Del contenido canónico (AD-08)",
+              "source": "informe:4.1.4 (AD-08)"
+            },
+            {
+              "name": "anchor_outbox",
+              "detail": "tx hash, bloque y reintentos",
+              "source": "informe:5.2.6.2"
+            }
+          ]
+        },
+        "technology": {
+          "title": "TECNOLOGÍA",
+          "items": [
+            {
+              "name": "Smart contract (Solidity)",
+              "detail": "Solo el backend puede escribir",
+              "source": "informe:4.1.4 (AD-09)"
+            },
+            {
+              "name": "Red EVM de pruebas configurable",
+              "source": "informe:4.1.2.3 (TC08)"
+            },
+            {
+              "name": "Proveedor RPC",
+              "detail": "JSON-RPC",
+              "source": "informe:4.3.3"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "notes": [
+    "El informe se contradice en la tecnología de la Web App: la decisión AD-13 (capítulo IV) dice Angular, pero los capítulos 7.1.1 y 7.1.4 indican Flutter Web publicado en Firebase Hosting. La lámina refleja lo implementado.",
+    "SANIPES y PRODUCE aparecen en el informe como referencia de certificación y de ferias, no como actores formales; por eso se marcan como inferidos."
+  ]
+}

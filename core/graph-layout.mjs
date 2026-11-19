@@ -485,22 +485,50 @@ function round(v) {
   return Math.round(v * 100) / 100;
 }
 
-/** Left-edge track assignment. Returns the number of tracks used. */
+/**
+ * Channel routing: give every jog (a segment whose top and bottom x differ)
+ * a horizontal track. Track 0 is the highest. Returns the number of tracks.
+ *
+ * Vertical constraints avoid crossings that ordering alone cannot see: a jog
+ * drops from x1 at the channel top to its track, so if x1 lies within another
+ * jog's span, it must use a higher track than that jog, or it would cut
+ * through it. Likewise its rise to x2 at the channel bottom must sit below any
+ * jog whose span covers x2. Jogs are placed in constraint order (each one
+ * below everything it must be below); constraint cycles mean an unavoidable
+ * crossing and are broken at the leftmost jog. Jogs that overlap never share
+ * a track.
+ */
 function assignTracks(segs, opt) {
   const jogs = segs
     .filter((s) => s.x1 !== s.x2) // both rounded already; any difference needs a track
-    .map((s) => ({ s, lo: Math.min(s.x1, s.x2), hi: Math.max(s.x1, s.x2) }))
+    .map((s) => ({ s, lo: Math.min(s.x1, s.x2), hi: Math.max(s.x1, s.x2), above: [], below: 0 }))
     .sort((a, b) => a.lo - b.lo || a.hi - b.hi || a.s.edge - b.s.edge);
-  const trackEnd = [];
-  for (const j of jogs) {
-    let t = trackEnd.findIndex((end) => end + opt.trackGap <= j.lo);
-    if (t === -1) {
-      t = trackEnd.length;
-      trackEnd.push(j.hi);
-    } else trackEnd[t] = j.hi;
-    j.s.track = t;
+  const within = (x, j) => x > j.lo && x < j.hi;
+  for (const a of jogs) {
+    for (const b of jogs) {
+      if (a === b) continue;
+      // a must be above b when a's drop (x1) is inside b, or b's rise (x2) is inside a.
+      if (within(a.s.x1, b) || within(b.s.x2, a)) {
+        a.above.push(b);
+        b.below += 1;
+      }
+    }
   }
-  return trackEnd.length;
+  const placed = [];
+  const pending = new Set(jogs);
+  while (pending.size) {
+    let next = [...pending].find((j) => j.below === 0);
+    if (!next) next = pending.values().next().value; // cycle: leftmost pending jog
+    pending.delete(next);
+    for (const b of next.above) b.below -= 1;
+    // Lowest track (largest index needed) above which every constraint holds.
+    const minTrack = Math.max(-1, ...placed.filter((p) => p.above.includes(next)).map((p) => p.s.track)) + 1;
+    let t = minTrack;
+    while (placed.some((p) => p.s.track === t && p.lo < next.hi + opt.trackGap && next.lo < p.hi + opt.trackGap)) t++;
+    next.s.track = t;
+    placed.push(next);
+  }
+  return placed.length ? Math.max(...placed.map((p) => p.s.track)) + 1 : 0;
 }
 
 function simplify(points) {

@@ -44,6 +44,34 @@ function segmentHitsRect(p, q, r) {
   return x1 < r.x + r.width - 0.01 && x2 > r.x + 0.01 && y1 < r.y + r.height - 0.01 && y2 > r.y + 0.01;
 }
 
+/** Proper crossings between a horizontal and a vertical segment of two different edges. */
+function drawnCrossings(out) {
+  const segs = out.edges.flatMap((e) => e.points.slice(1).map((q, i) => ({ e: e.id, p: e.points[i], q })));
+  let n = 0;
+  for (const a of segs) {
+    for (const b of segs) {
+      if (a.e === b.e || a.p.y !== a.q.y || b.p.x !== b.q.x) continue; // a horizontal, b vertical
+      const x = b.p.x;
+      const y = a.p.y;
+      const inA = x > Math.min(a.p.x, a.q.x) && x < Math.max(a.p.x, a.q.x);
+      const inB = y > Math.min(b.p.y, b.q.y) && y < Math.max(b.p.y, b.q.y);
+      if (inA && inB) n++;
+    }
+  }
+  return n;
+}
+
+test('jogs in a channel are stacked so their drops do not cut each other', () => {
+  // Two people far apart feeding one box: the left one's long jog must not be
+  // crossed by the right one's drop (the bug seen in the first MediCita build).
+  const out = layoutGraph({
+    nodes: [box('p1'), box('p2'), box('p3'), box('p4'), box('sys', 240, 140)],
+    edges: ['p1', 'p2', 'p3', 'p4'].map((p) => ({ id: p, from: p, to: 'sys', label: label(150, 44) })),
+  });
+  assert.equal(drawnCrossings(out), 0);
+  assert.equal(drawnCrossings(layoutGraph(CONTEXT)), 0);
+});
+
 test('layout is deterministic', () => {
   assert.deepEqual(layoutGraph(CONTEXT), layoutGraph(structuredClone(CONTEXT)));
 });

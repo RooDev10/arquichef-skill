@@ -1,0 +1,54 @@
+/* C4 system context diagram. Box metrics must match BOX/NAME/KIND/DESC/LABEL in type.mjs. */
+
+.c4-head { display: flex; align-items: baseline; gap: 14px; padding: 4px 6px 2px; border-bottom: 2px solid #1168bd; }
+.c4-head h1 { margin: 0; font-size: 22px; line-height: 1.2; }
+.c4-head span { font-size: 13px; color: #555; }
+
+.stage { position: relative; margin: 0 auto; }
+.wires { position: absolute; left: 0; top: 0; overflow: visible; }
+.wires polyline { fill: none; stroke: #555; stroke-width: 1.4; stroke-dasharray: 6 4; stroke-linejoin: round; }
+.wires marker path { fill: #555; }
+
+.c4 {
+  position: absolute;
+  padding: 14px 14px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  overflow: hidden;
+}
+.c4 .n { font-size: 15px; line-height: 1.25; font-weight: bold; }
+.c4 .k { font-size: 11px; line-height: 1.3; opacity: .88; }
+.c4 .d { font-size: 12px; line-height: 1.3; }
+.c4.person { background: #08427b; border-radius: 34px 34px 10px 10px; }
+.c4.system { background: #1168bd; box-shadow: 0 0 0 3px #fff, 0 0 0 5px #1168bd; }
+.c4.external { background: #6b6b6b; }
+.c4.inferred { outline: 2px dashed #f59e0b; outline-offset: 3px; }
+
+.rel {
+  position: absolute;
+  padding: 0 2px;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #222;
+  background: rgba(255, 255, 255, .92);
+  overflow: hidden;
+}
+.rel .txt { display: block; }
+.rel .tech { display: block; font-size: 10px; line-height: 1.3; color: #666; }
+.inf-mark { color: #b45309; font-weight: bold; }
+.c4 .inf-mark { color: #fde68a; }
+
+.c4-foot { display: flex; flex-direction: column; gap: 4px; padding: 6px 6px 2px; border-top: 1px solid #ccc; font-size: 11px; color: #444; }
+.legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; }
+.legend .key { display: inline-flex; align-items: center; gap: 6px; }
+.sw { display: inline-block; width: 18px; height: 12px; border-radius: 3px; }
+.sw.person { background: #08427b; border-radius: 6px 6px 2px 2px; }
+.sw.system { background: #1168bd; }
+.sw.external { background: #6b6b6b; }
+.sw.arrow { height: 0; border-top: 2px dashed #555; border-radius: 0; }
+.credit { color: #666; text-align: right; }

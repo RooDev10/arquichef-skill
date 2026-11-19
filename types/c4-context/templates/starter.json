@@ -1,0 +1,28 @@
+{
+  "arquichef": "1",
+  "type": "c4-context",
+  "meta": {
+    "title": "Nombre del sistema",
+    "organization": "Organización",
+    "language": "es",
+    "sources": [
+      { "id": "doc", "label": "Documento fuente" }
+    ]
+  },
+  "system": {
+    "id": "sistema",
+    "name": "Nombre del sistema",
+    "description": "Qué hace el sistema que se va a desarrollar, en una frase.",
+    "source": "doc:1"
+  },
+  "people": [
+    { "id": "usuario", "name": "Usuario", "description": "Quién es y para qué usa el sistema.", "source": "doc:2" }
+  ],
+  "externals": [
+    { "id": "proveedor", "name": "Sistema externo", "description": "Qué ofrece y por qué el sistema lo necesita.", "source": "doc:3" }
+  ],
+  "relationships": [
+    { "from": "usuario", "to": "sistema", "description": "Qué hace el usuario con el sistema", "technology": "HTTPS", "source": "doc:2" },
+    { "from": "sistema", "to": "proveedor", "description": "Qué le pide el sistema al externo", "technology": "API REST", "source": "doc:3" }
+  ]
+}

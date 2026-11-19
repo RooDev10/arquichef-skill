@@ -1,0 +1,47 @@
+{
+  "arquichef": "1",
+  "type": "c4-context",
+  "meta": {
+    "title": "MediCita",
+    "organization": "MediCita",
+    "description": "Contexto de la plataforma SaaS MediCita para redes de clínicas privadas medianas: quién la usa y de qué sistemas externos depende para recordatorios, cobertura de seguros y facturación electrónica.",
+    "language": "es",
+    "sources": [
+      { "id": "informe", "label": "Informe del proyecto MediCita (versión 2.1)" }
+    ]
+  },
+  "system": {
+    "id": "medicita",
+    "name": "MediCita",
+    "description": "Plataforma SaaS para agendar citas, hacer teleconsultas y llevar la historia clínica electrónica de la clínica.",
+    "source": "informe:1"
+  },
+  "people": [
+    { "id": "paciente", "name": "Paciente", "description": "Agenda citas, confirma recordatorios y hace teleconsultas desde el celular.", "source": "informe:3" },
+    { "id": "medico", "name": "Médico", "description": "Atiende citas presenciales y teleconsultas, y registra la historia clínica.", "source": "informe:3" },
+    { "id": "admision", "name": "Personal de admisión", "description": "Gestiona la agenda, confirma citas y cobra.", "source": "informe:3" },
+    { "id": "gerencia", "name": "Gerencia de la clínica", "description": "Revisa indicadores de ocupación, ausentismo y productividad.", "source": "informe:3" }
+  ],
+  "externals": [
+    { "id": "twilio", "name": "Twilio", "description": "Proveedor de envío de SMS.", "source": "informe:7 AD-07" },
+    { "id": "whatsapp", "name": "WhatsApp Business", "description": "API de mensajería de WhatsApp para empresas.", "source": "informe:7 AD-07" },
+    { "id": "eps", "name": "Aseguradoras (EPS)", "description": "Validan la cobertura del paciente antes de la cita.", "source": "informe:3" },
+    { "id": "sunat", "name": "SUNAT", "description": "Administración tributaria; recibe los comprobantes electrónicos.", "source": "informe:6" }
+  ],
+  "relationships": [
+    { "from": "paciente", "to": "medicita", "description": "Agenda citas, confirma recordatorios y hace teleconsultas", "technology": "HTTPS, WebRTC", "source": "informe:8" },
+    { "from": "medico", "to": "medicita", "description": "Atiende teleconsultas y registra la historia clínica", "technology": "HTTPS, WebRTC", "source": "informe:8" },
+    { "from": "admision", "to": "medicita", "description": "Gestiona la agenda, confirma citas y cobra", "technology": "HTTPS", "source": "informe:8" },
+    { "from": "gerencia", "to": "medicita", "description": "Consulta tableros de ocupación y ausentismo", "technology": "HTTPS", "source": "informe:8" },
+    { "from": "medicita", "to": "twilio", "description": "Envía recordatorios por SMS", "technology": "API de Twilio", "source": "informe:7 AD-07" },
+    { "from": "medicita", "to": "whatsapp", "description": "Envía recordatorios y reintenta si falla el SMS", "technology": "API de WhatsApp Business", "source": "informe:11" },
+    { "from": "medicita", "to": "eps", "description": "Valida la cobertura del paciente", "source": "informe:5 EP05" },
+    { "from": "medicita", "to": "sunat", "description": "Emite comprobantes electrónicos", "source": "informe:5 EP05" }
+  ],
+  "notes": [
+    "El informe contradice el despliegue: la decisión AD-06 dice AWS con Amazon EKS y la sección 10 dice Google Cloud con GKE. No cambia este diagrama de contexto, pero hay que resolverlo antes del diagrama de contenedores.",
+    "El informe no dice con qué protocolo se integra MediCita con las EPS ni con SUNAT; por eso esas relaciones no tienen tecnología.",
+    "SUSALUD aparece como actor (sección 3), pero el informe no describe ninguna interacción con el sistema; por eso no está en el diagrama.",
+    "Keycloak, Kong, RabbitMQ, el servidor TURN y Redshift son piezas internas de MediCita: aparecerán en el diagrama de contenedores, no en este."
+  ]
+}

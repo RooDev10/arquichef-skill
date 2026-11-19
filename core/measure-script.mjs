@@ -6,6 +6,8 @@
 // Findings, each tied to the spec path of the element (data-path):
 // - sheet-overflow  the sheet is wider than its declared width (error)
 // - overflow-x      an element's content is wider than the element (error)
+// - overflow-y      a fixed-size element (.fixed, e.g. a C4 box or arrow label
+//                   sized by the layout engine) is too short for its text (error)
 // - word-split      a word is broken across two lines (error; warning when the
 //                   break happens at a hyphen or slash, which is acceptable)
 // - icon-overlap    text runs underneath the corner icon (warning)
@@ -17,6 +19,7 @@ var sheet=document.querySelector('.sheet');var fit=document.getElementById('fit'
 if(!sheet||!fit)return;
 if(sheet.scrollWidth>sheet.clientWidth+1)add('sheet-overflow','error',null,sheet.scrollWidth+'px > '+sheet.clientWidth+'px');
 document.querySelectorAll('.el,.box,.band').forEach(function(el){if(el.scrollWidth>el.clientWidth+1)add('overflow-x','error',el,el.textContent.trim().replace(/\\s+/g,' '));});
+document.querySelectorAll('.fixed').forEach(function(el){if(el.scrollHeight>el.clientHeight+1)add('overflow-y','error',el,el.textContent.trim().replace(/\\s+/g,' '));});
 var range=document.createRange();
 var walker=document.createTreeWalker(sheet,NodeFilter.SHOW_TEXT);var node;
 while((node=walker.nextNode())){var t=node.nodeValue;var re=/\\S+/g;var m;
